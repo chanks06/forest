@@ -1,16 +1,14 @@
 # forest
-ML task in python to predict forest type based on spectral data 
+ML task in python to predict tree types in Roosevelt National Forest in Colorado 
 
-## dataset citation: 
-Johnson,Brian. (2015). Forest type mapping. UCI Machine Learning Repository. https://doi.org/10.24432/C5QP56.
+## About Dataset
+Context
+This dataset contains tree observations from four areas of the Roosevelt National Forest in Colorado. All observations are cartographic variables (no remote sensing) from 30 meter x 30 meter sections of forest. There are over half a million measurements total!
 
-"This data set contains training and testing data from a remote sensing study which mapped different forest types based on their spectral characteristics at visible-to-near infrared wavelengths, using ASTER satellite imagery. The output (forest type map) can be used to identify and/or quantify the ecosystem services (e.g. carbon storage, erosion protection) provided by the forest."
+## Content
+This dataset includes information on tree type, shadow coverage, distance to nearby landmarks (roads etcetera), soil type, and local topography.
 
-## metadata: 
-**Class**: 's' ('Sugi' forest), 'h' ('Hinoki' forest), 'd' ('Mixed deciduous' forest), 'o' ('Other' non-forest land)
+## Acknowledgement
+This dataset is part of the UCI Machine Learning Repository, and the original source can be found here. The original database owners are Jock A. Blackard, Dr. Denis J. Dean, and Dr. Charles W. Anderson of the Remote Sensing and GIS Program at Colorado State University.
 
-**b1 - b9**: ASTER image bands containing spectral information in the green, red, and near infrared wavelengths for three dates (Sept. 26, 2010; March 19, 2011; May 08, 2011.
 
-**pred_minus_obs_S_b1 - pred_minus_obs_S_b9**: Predicted spectral values (based on spatial interpolation) minus actual spectral values for the 's' class (b1-b9).
-
-**pred_minus_obs_H_b1 - pred_minus_obs_H_b9**: Predicted spectral values (based on spatial interpolation) minus actual spectral values for the 'h' class (b1-b9).
