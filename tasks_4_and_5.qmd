@@ -1,0 +1,23 @@
+---
+jupyter: python3
+---
+
+# Predicting Forest Type
+
+## Intro
+
+## Problem Statement
+
+## Research Questions
+
+## Methodology
+
+## Results
+
+## Discussion and Implications
+
+## Conclusion
+
+## References
+
+## Appendix
