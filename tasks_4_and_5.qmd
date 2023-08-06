@@ -2,7 +2,103 @@
 jupyter: python3
 ---
 
-# Predicting Forest Type
+# PREDICTING FOREST TYPE 
+## Final Project, Python for Data Science 
+### Willamette University MSDS 
+by Charles Hanks, Carter McMahon, & Cleighton Roberts
+
+[Dataset](https://www.kaggle.com/datasets/uciml/forest-cover-type-dataset)
+
+# TASK 4 : IMPLEMENTATION & EVALUATION 
+
+## Loading Libraries: 
+
+```{python}
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score
+from sklearn.model_selection import KFold
+from sklearn.model_selection import cross_val_score
+from sklearn.svm import SVC
+```
+
+## Loading Dataset
+
+```{python}
+ds = pd.read_csv('/Users/chanks/workspace/forest/data/covtype.csv')
+```
+
+### Data Preprocessing 
+
+```{python}
+scale = StandardScaler()
+
+ds.columns.get_loc('Cover_Type') # finding index of dependent variable 
+
+numerical_features = ds.iloc[:,0:10]
+scaled_num_features =  pd.DataFrame(scale.fit_transform(numerical_features), columns = numerical_features.columns)
+
+ds = pd.concat([scaled_num_features, ds.iloc[:,10:]], axis = 1)
+```
+
+### Train/Test Split 
+
+```{python}
+#Subsetting feature
+X = ds.drop(ds.columns[-1], axis = 1) #feature subset that excludes "Cover Type" target variable
+y = ds[ds.columns[-1]] #target variable "Cover Type"
+
+X_train, X_test, y_train, y_test = train_test_split(X,y, random_state = 650, test_size = 0.3)
+```
+
+### Task 4.1 : Random Forest Classifier 
+Implement a random forest classifier using sci-kit-learn. Create a subsection in your report describing the chosen parameters of the classifier and training method, and how they were set. Also, report the accuracy of the resulting method.
+
+```{python}
+rf = RandomForestClassifier(random_state=650)
+```
+
+### Task 4.2 : Support Vector Machine 
+ Modify your solution in Task 4.1 to use a Support Vector Machine (SVC) classifier using sci-kit- learn with the appropriate parameters including kernel = ‘linear’. Report the accuracy of the resulting method. Compare the results of the SVM model with the random forest model implemented in task 4.1. You may also justify the other parameters used or tuned in both models and how that affects the results.
+
+```{python}
+model_svc = SVC(kernel = 'linear')
+```
+
+```{python}
+model_svc.fit(X_train, y_train)
+```
+
+The training attempt above takes an exceedingly long time. Per the [sci-kit learn documentation](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html):
+
+*"For large datasets consider using LinearSVC or SGDClassifier instead, possibly after a Nystroem transformer or other Kernel Approximation"*
+
+Our dataset has 581,012 observations. We will proceed with the LinearSVC() function:
+
+```{python}
+from sklearn.svm import LinearSVC
+
+model_lsvc = LinearSVC(random_state = 650)
+model_lsvc.fit(X_train,y_train) #model took about 6 minutes to fit, that is much more efficient than SVC(). 
+```
+
+```{python}
+#predicting forest type on test data using first linear SVC model:  
+lsvc_predict = model_lsvc.predict(X_test)
+
+#print accuracy score: 
+print(accuracy_score(lsvc_predict, y_test))
+```
+
+### SVC round 2: adding cross validation, a tune grid & PCA 
+
+
+### Comparison of Random Forest vs. Support Vector Machine 
 
 ## Intro
 
@@ -12,7 +108,23 @@ jupyter: python3
 
 ## Methodology
 
+### Random Forest
+The final random forest model that we chose only differed from the default hyperparameters in that the number of estimators was set to 250 rather than 100. We decided to do that after testing higher values for min_sample_leaf, min_sample_split, and n_estimators using GridSearchCV. The results of that cross-validated hyperparameter tuning grid showed that the default values for min_sample_leaf and min_sample_split were best in our case, and that 250 was better than 100 for n_estimators. Due to our limited access to computing power, 250 was the highest value that we tested for n_estimators, so it is possible that an even higher value could have yielded better accuracy scores.
+
+### Support Vector Machine
+
+
+### Clustering
+
 ## Results
+
+### Random Forest
+Despite our hyperparameter tuning efforts, the resulting improvement in accuracy over default settings was minimal. The tuned model produced an accuracy score of 0.952521 compared to 0.95201 with the default hyperparameter settings.
+
+### Support Vector Machine
+
+
+### Clustering
 
 ## Discussion and Implications
 
