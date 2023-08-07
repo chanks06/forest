@@ -14579,7 +14579,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="TASK-5:-Group-Project-Report">TASK 5: Group Project Report<a class="anchor-link" href="#TASK-5:-Group-Project-Report">&#182;</a></h1><h2 id="Predicting-Forest-Type">Predicting Forest Type<a class="anchor-link" href="#Predicting-Forest-Type">&#182;</a></h2><h3 id="Final-Project,-Python-for-Data-Science">Final Project, Python for Data Science<a class="anchor-link" href="#Final-Project,-Python-for-Data-Science">&#182;</a></h3><h4 id="Willamette-University-MSDS">Willamette University MSDS<a class="anchor-link" href="#Willamette-University-MSDS">&#182;</a></h4><p>by Charles Hanks, Carter McMahon, &amp; Cleighton Roberts</p>
+<h1 id="TASK-5:-Group-Project-Report">TASK 5: Group Project Report<a class="anchor-link" href="#TASK-5:-Group-Project-Report">&#182;</a></h1><h2 id="Predicting-Tree-Type-in-the-Roosevelt-National-Forest">Predicting Tree Type in the Roosevelt National Forest<a class="anchor-link" href="#Predicting-Tree-Type-in-the-Roosevelt-National-Forest">&#182;</a></h2><h3 id="Final-Project-%7C-Python-for-Data-Science">Final Project | Python for Data Science<a class="anchor-link" href="#Final-Project-%7C-Python-for-Data-Science">&#182;</a></h3><h4 id="MSDS,-Willamette-University">MSDS, Willamette University<a class="anchor-link" href="#MSDS,-Willamette-University">&#182;</a></h4><p>by Charles Hanks, Carter McMahon, &amp; Cleighton Roberts</p>
 <p><br>
 <br>
 <br></p>
@@ -14606,7 +14606,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Intro">Intro<a class="anchor-link" href="#Intro">&#182;</a></h2><p>The goal of our project was to predict the types of trees present in different areas of the Roosevelt National Forest in Colorado. We built various models trained on cartographic variables such as shadow coverage, distance to nearby landmarks, soil type, and local topography to classify tree type.</p>
+<h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2><p>The goal of our project was to predict the types of trees present in different areas of the Roosevelt National Forest in Colorado. We built various models trained on cartographic variables such as shadow coverage, distance to nearby landmarks, soil type, and local topography to classify tree type.</p>
 
 </div>
 </div>
@@ -14618,7 +14618,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Problem-Statement">Problem Statement<a class="anchor-link" href="#Problem-Statement">&#182;</a></h2><p>The main problem we addressed is how to identify the type of a tree based on its surroundings. If we know certain characteristics about a piece of land, such as elevation or the hillshade at noon, what sort of trees would we likely find there?</p>
+<h2 id="Problem-Statement">Problem Statement<a class="anchor-link" href="#Problem-Statement">&#182;</a></h2><p>The main problem we addressed was how to identify the type of a tree based on its surroundings. If we know certain characteristics about a piece of land, such as elevation or the hillshade at noon, what sort of trees (i.e. "cover type") would we likely find there?</p>
 
 </div>
 </div>
@@ -14644,7 +14644,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Methodology">Methodology<a class="anchor-link" href="#Methodology">&#182;</a></h2><h3 id="Random-Forest">Random Forest<a class="anchor-link" href="#Random-Forest">&#182;</a></h3><p>The final random forest model that we chose only differed from the default hyperparameters in that the number of estimators was set to 250 rather than 100. We decided to do that after testing higher values for min_sample_leaf, min_sample_split, and n_estimators using GridSearchCV. The results of that cross-validated hyperparameter tuning grid showed that the default values for min_sample_leaf and min_sample_split were best in our case, and that 250 was better than 100 for n_estimators. Due to our limited access to computing power, 250 was the highest value that we tested for n_estimators, so it is possible that an even higher value could have yielded better accuracy scores.</p>
 <h3 id="Support-Vector-Machine">Support Vector Machine<a class="anchor-link" href="#Support-Vector-Machine">&#182;</a></h3><p>Given the computational expensive of training a SVM model on a dataset of this size, we utilized the RandomSearchCV tuning grid method to optimize the model. We focused on 2 hyperparameters: 'C', the misclassification penalty, and 'max_iter', the number of times the algorithm iterates. We chose a logarithmic range of values to try for 'C', and for each value, a random 'max_iter' value between 1000 and 5000. Each combination of these hyperparameters was passed through 3-fold cross validation in our grid search. From this randomized grid search, the best value for 'C' was 14.37, and the best value for 'max_iter' was 1902. Unfortunately, we saw negligible increase in model performance with the random search best parameters.</p>
-<h3 id="K-Nearest-Neighbors">K Nearest Neighbors<a class="anchor-link" href="#K-Nearest-Neighbors">&#182;</a></h3><p>We wanted to try a KNN model for two reasons. First, KNN is a more simple and fast algorithm compared to RF and SVM. Second, we suspected that it would perform well on geospatial data given that it is based on distance between data points. The best value for hyperparamter K was 5.</p>
+<h3 id="K-Nearest-Neighbors">K Nearest Neighbors<a class="anchor-link" href="#K-Nearest-Neighbors">&#182;</a></h3><p>We wanted to try a KNN model for two reasons. First, KNN is a more simple and fast 'lazy learner' algorithm compared to RF and SVM. Second, we suspected that it would perform well on geospatial data given that it is based on distance between data points. The best value for hyperparameter K was 5.</p>
 
 </div>
 </div>
@@ -14668,7 +14668,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Results">Results<a class="anchor-link" href="#Results">&#182;</a></h2><h3 id="Random-Forest">Random Forest<a class="anchor-link" href="#Random-Forest">&#182;</a></h3><p>Despite our hyperparameter tuning efforts, the resulting improvement in accuracy over default settings was minimal. The tuned model produced an accuracy score of 0.952521 compared to 0.95201 with the default hyperparameter settings.</p>
-<h3 id="Support-Vector-Machine">Support Vector Machine<a class="anchor-link" href="#Support-Vector-Machine">&#182;</a></h3><p>Our best SVM model was the basesline LinearSVC Model trained on 70% of the dataset. The accuracy score of this model was .72.</p>
+<h3 id="Support-Vector-Machine">Support Vector Machine<a class="anchor-link" href="#Support-Vector-Machine">&#182;</a></h3><p>Our best SVM model was the baseline LinearSVC Model trained on 70% of the dataset. The accuracy score of this model was .72.</p>
 <h3 id="K-Nearest-Neighbors">K-Nearest Neighbors<a class="anchor-link" href="#K-Nearest-Neighbors">&#182;</a></h3><p>Our KNN model's performance was a pleasant surprise. With a k = 5, The accuracy score was .92.</p>
 
 </div>
@@ -14681,7 +14681,32 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Clustering">Clustering<a class="anchor-link" href="#Clustering">&#182;</a></h3>
+<h3 id="Clustering">Clustering<a class="anchor-link" href="#Clustering">&#182;</a></h3><p>We found the clusters were not apparent when graphed onto a 2d graph, as one
+eclipsed the other, making it look like the same group. To solve this problem we graphed it in 3
+dimensions based on the principal component. The last 4 principal components didn’t have as
+good of a cluster, so we will just focus on the top 3.</p>
+<p>The first one is a north facing slope that is at a low altitude. We can infer that it is north
+facing because the aspect is low, but the slope is not zero. North and east facing slopes are the
+lower values of aspect. We can then assume that they are also north, because of the hillshade
+values, which are lower than all of the other principal components. North facing slopes get less
+sun, (hillshade is the brightness of the slope) while east facing slopes get quite a lot, therefore it
+is most likely a north facing slope. Additionally, this component seems to be closer to roads and
+water than the others too. Lastly, this had a very high value for the covertype, but not the
+highest, leading me to believe this was mostly of covertype 3 and 4.</p>
+<p>The second principal component is a low to mid elevation forest with a south or a
+western facing slope. As the sun rises in the east, we can assume that these are mostly
+comprised of western facing slopes because the 9am hillshade is much lower than the other
+components, while the other hillshades are not nearly as low. The covertype was low, but not
+negative so it is likely any of them.</p>
+<p>The third principal component was the most interesting, as it was the only one that split
+up the cluster into two distinct pieces, unlike the other ones which were homogenous. This one
+was a higher elevation and could have had any slope or aspect, which is probably what split up
+the kmeans group as the other two principal components were so heavily based on aspect, and
+also therefore determined hillshade. Additionally, it was very far from water, both horizontally
+and vertically. Additionally, the covertype was the only negative one, suggesting that it was
+almost entirely comprised of covertype 1, suggesting that we could ascribe all of those features
+to a preferable habitat for that covertype.</p>
+
 </div>
 </div>
 </div>
@@ -14718,7 +14743,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Discussion-&amp;-Implications">Discussion &amp; Implications<a class="anchor-link" href="#Discussion-&amp;-Implications">&#182;</a></h2><p>Based on our process of training and tuning the SVM models, we can say that this dataset is not ideal for a Support Vector Machine Model. During our exploratory data analysis, we found signficant overlap among classes. That is to say, many of the different tree types share similar characteristics - after all, they are in the same forest. SVMs do not perform well with very large dataset and when classes overlap (that data set has a lot of 'noise').  These two disadvantages explain why our SVM model did not accurately predict above a .71.</p>
 <p>KNN perform better than our expectations, given how relatively simple the algorithm is compared to RF and SVM. We suspect that KNN performed well due to much of our dataset was spatial distances, and KNN detects neighbors based on Euclidean distance in n-dimensional feature space.</p>
-<p>Random Forest is a tried and true model that produces consistently good results. We attribute this to the fact that our dataset contained many one-hot encoded (1/0) columns, so the model could quickly determine tree type by eliminating certain potential tree types. For example, there were tree types that were never found in certain soil types. An ensemble of decision trees excels with this sort of data.</p>
+<p>Random Forest is a tried and true model that produces consistently good results. In our case, we attribute the strong out-of-the-box performance to the fact that our dataset contained many one-hot encoded (1/0) columns, so the model could quickly determine cover type by eliminating certain potential tree types. For example, there were trees that were never found in certain soil types. An ensemble of decision trees excels with this sort of data.</p>
 
 </div>
 </div>
@@ -14730,7 +14755,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Findings">Findings<a class="anchor-link" href="#Findings">&#182;</a></h3><p>Elevation is the cartographic feature most predictive of tree type. We arrived at this conclusion by examining the variable importance plot of our Random Forest model. Other important features include how far the tree is from a road, body of water, or where a fire has started.</p>
+<h3 id="Findings">Findings<a class="anchor-link" href="#Findings">&#182;</a></h3><p>Elevation is the cartographic feature most predictive of tree type. We arrived at this conclusion by examining the variable importance plot of our Random Forest model, as well as the results of the KBest Selection process. Other important features include how far the tree is from a road, a body of water, or from where a fire has started.</p>
 
 </div>
 </div>
